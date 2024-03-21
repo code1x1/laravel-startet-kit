@@ -1,9 +1,9 @@
-import GuestLayout from '@/Layouts/GuestLayout';
-import InputError from 'resources/js/Components/InputError';
-import PrimaryButton from 'resources/js/Components/PrimaryButton';
-import TextInput from 'resources/js/Components/TextInput';
+import GuestLayout from 'src/js/Layouts/GuestLayout';
+import InputError from 'src/js/Components/InputError';
+import PrimaryButton from 'src/js/Components/PrimaryButton';
+import TextInput from 'src/js/Components/TextInput';
 import { Head, useForm } from '@inertiajs/react';
-import { FormEventHandler } from 'react';
+import { type FormEventHandler } from 'react';
 
 export default function ForgotPassword({ status }: { status?: string }) {
     const { data, setData, post, processing, errors } = useForm({
@@ -35,7 +35,9 @@ export default function ForgotPassword({ status }: { status?: string }) {
                     value={data.email}
                     className="mt-1 block w-full"
                     isFocused={true}
-                    onChange={(e) => setData('email', e.target.value)}
+                    onChange={(e) => {
+                        setData('email', e.target.value);
+                    }}
                 />
 
                 <InputError message={errors.email} className="mt-2" />

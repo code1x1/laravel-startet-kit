@@ -1,9 +1,9 @@
-import { useEffect, FormEventHandler } from 'react';
-import GuestLayout from '@/Layouts/GuestLayout';
-import InputError from 'resources/js/Components/InputError';
-import InputLabel from 'resources/js/Components/InputLabel';
-import PrimaryButton from 'resources/js/Components/PrimaryButton';
-import TextInput from 'resources/js/Components/TextInput';
+import { useEffect, type FormEventHandler } from 'react';
+import GuestLayout from 'src/js/Layouts/GuestLayout';
+import InputError from 'src/js/Components/InputError';
+import InputLabel from 'src/js/Components/InputLabel';
+import PrimaryButton from 'src/js/Components/PrimaryButton';
+import TextInput from 'src/js/Components/TextInput';
 import { Head, useForm } from '@inertiajs/react';
 
 export default function ConfirmPassword() {
@@ -42,7 +42,9 @@ export default function ConfirmPassword() {
                         value={data.password}
                         className="mt-1 block w-full"
                         isFocused={true}
-                        onChange={(e) => setData('password', e.target.value)}
+                        onChange={(e) => {
+                            setData('password', e.target.value);
+                        }}
                     />
 
                     <InputError message={errors.password} className="mt-2" />

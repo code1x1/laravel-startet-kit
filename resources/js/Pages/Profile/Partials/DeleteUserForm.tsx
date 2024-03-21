@@ -1,10 +1,10 @@
-import { useRef, useState, FormEventHandler } from 'react';
-import DangerButton from 'resources/js/Components/DangerButton';
-import InputError from 'resources/js/Components/InputError';
-import InputLabel from 'resources/js/Components/InputLabel';
-import Modal from 'resources/js/Components/Modal';
-import SecondaryButton from 'resources/js/Components/SecondaryButton';
-import TextInput from 'resources/js/Components/TextInput';
+import { useRef, useState, type FormEventHandler } from 'react';
+import DangerButton from 'src/js/Components/DangerButton';
+import InputError from 'src/js/Components/InputError';
+import InputLabel from 'src/js/Components/InputLabel';
+import Modal from 'src/js/Components/Modal';
+import SecondaryButton from 'src/js/Components/SecondaryButton';
+import TextInput from 'src/js/Components/TextInput';
 import { useForm } from '@inertiajs/react';
 
 export default function DeleteUserForm({ className = '' }: { className?: string }) {
@@ -31,9 +31,13 @@ export default function DeleteUserForm({ className = '' }: { className?: string 
 
         destroy(route('profile.destroy'), {
             preserveScroll: true,
-            onSuccess: () => closeModal(),
+            onSuccess() {
+                closeModal();
+            },
             onError: () => passwordInput.current?.focus(),
-            onFinish: () => reset(),
+            onFinish() {
+                reset();
+            },
         });
     };
 
@@ -76,7 +80,9 @@ export default function DeleteUserForm({ className = '' }: { className?: string 
                             name="password"
                             ref={passwordInput}
                             value={data.password}
-                            onChange={(e) => setData('password', e.target.value)}
+                            onChange={(e) => {
+                                setData('password', e.target.value);
+                            }}
                             className="mt-1 block w-3/4"
                             isFocused
                             placeholder="Password"

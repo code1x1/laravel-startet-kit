@@ -1,10 +1,11 @@
-import { AxiosInstance } from 'axios';
-import { route as ziggyRoute } from 'ziggy-js';
+import { type AxiosInstance } from 'axios';
+import { type route as ziggyRoute } from 'ziggy-js';
 
 declare global {
+    // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
     interface Window {
         axios: AxiosInstance;
     }
 
-    var route: typeof ziggyRoute;
+    const route: typeof ziggyRoute;
 }

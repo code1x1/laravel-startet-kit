@@ -1,14 +1,22 @@
-import InputError from 'resources/js/Components/InputError';
-import InputLabel from 'resources/js/Components/InputLabel';
-import PrimaryButton from 'resources/js/Components/PrimaryButton';
-import TextInput from 'resources/js/Components/TextInput';
+import InputError from 'src/js/Components/InputError';
+import InputLabel from 'src/js/Components/InputLabel';
+import PrimaryButton from 'src/js/Components/PrimaryButton';
+import TextInput from 'src/js/Components/TextInput';
 import { Link, useForm, usePage } from '@inertiajs/react';
 import { Transition } from '@headlessui/react';
-import { FormEventHandler } from 'react';
-import { PageProps } from 'resources/js/types';
+import { type FormEventHandler } from 'react';
+import { type PageProps } from 'src/js/types';
 
-export default function UpdateProfileInformation({ mustVerifyEmail, status, className = '' }: { mustVerifyEmail: boolean, status?: string, className?: string }) {
-    const user = usePage<PageProps>().props.auth.user;
+export default function UpdateProfileInformation({
+    mustVerifyEmail,
+    status,
+    className = '',
+}: {
+    mustVerifyEmail: boolean;
+    status?: string;
+    className?: string;
+}) {
+    const { user } = usePage<PageProps>().props.auth;
 
     const { data, setData, patch, errors, processing, recentlySuccessful } = useForm({
         name: user.name,
@@ -39,7 +47,9 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
                         id="name"
                         className="mt-1 block w-full"
                         value={data.name}
-                        onChange={(e) => setData('name', e.target.value)}
+                        onChange={(e) => {
+                            setData('name', e.target.value);
+                        }}
                         required
                         isFocused
                         autoComplete="name"
@@ -56,7 +66,9 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
                         type="email"
                         className="mt-1 block w-full"
                         value={data.email}
-                        onChange={(e) => setData('email', e.target.value)}
+                        onChange={(e) => {
+                            setData('email', e.target.value);
+                        }}
                         required
                         autoComplete="username"
                     />
