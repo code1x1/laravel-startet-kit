@@ -1,7 +1,7 @@
 import { Fragment, type PropsWithChildren } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 
-export default function Modal({
+export function Modal({
     children,
     show = false,
     maxWidth = '2xl',

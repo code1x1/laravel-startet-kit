@@ -20,7 +20,7 @@ const DropDownContext = createContext<{
     toggleOpen() {},
 });
 
-const Dropdown = ({ children }: PropsWithChildren) => {
+export const Dropdown = ({ children }: PropsWithChildren) => {
     const [open, setOpen] = useState(false);
 
     const toggleOpen = () => {
@@ -117,5 +117,3 @@ const DropdownLink = ({ className = '', children, ...props }: InertiaLinkProps) 
 Dropdown.Trigger = Trigger;
 Dropdown.Content = Content;
 Dropdown.Link = DropdownLink;
-
-export default Dropdown;

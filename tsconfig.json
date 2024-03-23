@@ -9,10 +9,11 @@
         "target": "ESNext",
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
+        "allowImportingTsExtensions": true,
         "noEmit": true,
         "baseUrl": "./",
         "paths": {
-            "src/*": ["./resources/*"],
+            "resources/*": ["./resources/*"],
             "ziggy-js": ["./vendor/tightenco/ziggy"]
         }
     },

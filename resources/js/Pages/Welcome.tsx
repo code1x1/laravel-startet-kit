@@ -1,5 +1,5 @@
 import { Link, Head } from '@inertiajs/react';
-import { type PageProps } from 'src/js/types';
+import { type PageProps } from 'resources/js/types';
 
 export default function Welcome({
     auth,
@@ -13,7 +13,7 @@ export default function Welcome({
                 <div className="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
                     <div className="relative w-full max-w-2xl px-6 lg:max-w-7xl">
                         <header className="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3">
-                            <div className="flex lg:justify-center lg:col-start-2">
+                            <div className="flex lg:justify-center lg:col-start-2 h-12">
                                 <svg
                                     className="h-12 w-auto text-white lg:h-16 lg:text-[#FF2D20]"
                                     viewBox="0 0 62 65"

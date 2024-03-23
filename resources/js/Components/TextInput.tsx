@@ -1,7 +1,7 @@
 import { forwardRef, useEffect, useImperativeHandle, useRef, type InputHTMLAttributes } from 'react';
 import React from 'react';
 
-export default forwardRef(function TextInput(
+export const TextInput = forwardRef(function TextInput(
     {
         type = 'text',
         className = '',

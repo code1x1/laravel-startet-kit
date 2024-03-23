@@ -1,36 +1,28 @@
 import { defineConfig } from 'vite';
 import alias from '@rollup/plugin-alias';
+import resolve from '@rollup/plugin-node-resolve';
 import laravel from 'laravel-vite-plugin';
 import react from '@vitejs/plugin-react';
-import path from "path";
+import tsconfigPaths from 'vite-tsconfig-paths';
 
-
-const projectRootDir = path.resolve(__dirname);
-
-const entries = {
-    entries: [
-        {
-            find: 'src/',
-            replacement: path.resolve(projectRootDir, 'resources/') + "/"
-        },
-        {
-            find: "ziggy-js",
-            replacement: "./vendor/tightenco/ziggy"
-        }
-    ]
-
-  }
 
 const config = defineConfig({
+    root: __dirname,
     resolve: {
-        alias: alias(entries)
+        alias: [
+            {
+                find: "ziggy-js",
+                replacement: "./vendor/tightenco/ziggy"
+            }]
     },
     plugins: [
         laravel({
-            input: 'src/js/app.tsx',
-            refresh: true,
+            input: 'resources/js/app.tsx',
+            refresh: true
         }),
+        resolve(),
         react(),
+        tsconfigPaths()
     ],
 });
 

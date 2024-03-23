@@ -1,4 +1,4 @@
-import ApplicationLogo from 'src/js/Components/ApplicationLogo';
+import {ApplicationLogo} from 'resources/js/Components';
 import { Link } from '@inertiajs/react';
 import { type PropsWithChildren } from 'react';
 

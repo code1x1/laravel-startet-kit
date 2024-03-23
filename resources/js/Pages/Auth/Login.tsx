@@ -1,12 +1,9 @@
 import { useEffect, type FormEventHandler } from 'react';
-import Checkbox from 'src/js/Components/Checkbox';
-import GuestLayout from 'src/js/Layouts/GuestLayout';
-import InputError from 'src/js/Components/InputError';
-import InputLabel from 'src/js/Components/InputLabel';
-import PrimaryButton from 'src/js/Components/PrimaryButton';
-import TextInput from 'src/js/Components/TextInput';
+import { Checkbox, InputError, InputLabel, PrimaryButton, TextInput } from 'resources/js/Components';
 import { Head, Link, useForm } from '@inertiajs/react';
-import { GoogleLoginButton } from 'src/js/Components/ui/GoogleLoginButton';
+import { GoogleLoginButton } from 'resources/js/Components/ui/GoogleLoginButton';
+import GuestLayout from 'resources/js/Layouts/GuestLayout';
+import { GithubLoginButton } from 'resources/js/Components/ui/GithubLoginButton';
 
 export default function Login({ status, canResetPassword }: { status?: string; canResetPassword: boolean }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -33,7 +30,7 @@ export default function Login({ status, canResetPassword }: { status?: string; c
 
             {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
 
-            <form onSubmit={submit}>
+            <form onSubmit={submit} className='mb-4'>
                 <div>
                     <InputLabel htmlFor="email" value="Email" />
 
@@ -99,8 +96,15 @@ export default function Login({ status, canResetPassword }: { status?: string; c
                     </PrimaryButton>
                 </div>
             </form>
-            <hr />
-            <GoogleLoginButton />
+            <hr className='mb-4' />
+            <div>
+                <div className='my-2 flex flex-col content-center'>
+                    <GoogleLoginButton />
+                </div>
+                <div className='my-2 flex flex-col content-center'>
+                    <GithubLoginButton />
+                </div>
+            </div>
         </GuestLayout>
     );
 }

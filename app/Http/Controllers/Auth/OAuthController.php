@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Inertia\Response;
 use Inertia\Inertia;
@@ -14,33 +13,29 @@ use Laravel\Socialite\Facades\Socialite;
 
 class OAuthController extends Controller
 {
-    public function redirect(Request $request, string $provider): RedirectResponse
+    public function redirect(string $provider): RedirectResponse
     {
-        Log::debug("provider: ". $provider);
-        if ($provider === "google") {
-            return Socialite::driver('google')->redirect();
-        }
+        return Socialite::driver($provider)->redirect();
     }
 
-    public function callback(Request $request, string $provider): Response
+    public function callback(string $provider): RedirectResponse
     {
-        if ($provider === "google") {
-            $googleUser = Socialite::driver('google')->user();
+        $providerUser = Socialite::driver($provider)->user();
 
-            $user = User::updateOrCreate([
-                'google_id' => $googleUser->id,
-            ], [
-                'name' => $googleUser->name,
-                'email' => $googleUser->email,
-                'google_token' => $googleUser->token,
-                'google_refresh_token' => $googleUser->refreshToken,
-            ]);
+        $user = User::updateOrCreate([
+            'provider_id' => $providerUser->id,
+            'provider_type' => $provider
+        ], [
+            'name' => $providerUser->getNickname() ?? $providerUser->getName(),
+            'email' => $providerUser->email,
+            'provider_token' => $providerUser->token,
+            'provider_refresh_token' => $providerUser->refreshToken,
+            'provider_payload' => json_encode($providerUser),
+            'avatar' => $providerUser->getAvatar()
+        ]);
 
-            Auth::login($user);
+        Auth::login($user);
 
-            return Inertia::render('Dashboard', [
-                'status' => session('status'),
-            ]);
-        }
+        return redirect('dashboard');
     }
 }

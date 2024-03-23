@@ -1,11 +1,8 @@
-import InputError from 'src/js/Components/InputError';
-import InputLabel from 'src/js/Components/InputLabel';
-import PrimaryButton from 'src/js/Components/PrimaryButton';
-import TextInput from 'src/js/Components/TextInput';
 import { Link, useForm, usePage } from '@inertiajs/react';
 import { Transition } from '@headlessui/react';
 import { type FormEventHandler } from 'react';
-import { type PageProps } from 'src/js/types';
+import { type PageProps } from 'resources/js/types';
+import { InputLabel, TextInput, InputError, PrimaryButton } from 'resources/js/Components';
 
 export default function UpdateProfileInformation({
     mustVerifyEmail,

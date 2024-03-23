@@ -1,10 +1,8 @@
 import { useState, type PropsWithChildren, type ReactNode } from 'react';
-import ApplicationLogo from 'src/js/Components/ApplicationLogo';
-import Dropdown from 'src/js/Components/Dropdown';
-import NavLink from 'src/js/Components/NavLink';
-import ResponsiveNavLink from 'src/js/Components/ResponsiveNavLink';
+import { ApplicationLogo, Dropdown, ResponsiveNavLink } from 'resources/js/Components';
 import { Link } from '@inertiajs/react';
-import { type User } from 'src/js/types';
+import { type User } from 'resources/js/types';
+import { NavLink } from '../Components/NavLink';
 
 export default function Authenticated({
     user,

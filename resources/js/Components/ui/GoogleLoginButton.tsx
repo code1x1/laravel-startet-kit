@@ -1,16 +1,15 @@
-import { DiscordLogoIcon, GitHubLogoIcon } from '@radix-ui/react-icons';
+import { BiLogoGoogle } from "react-icons/bi";
 
-import { Button } from 'src/js/Components/ui/button';
+import { Button } from 'resources/js/Components/ui/button';
 
 export function GoogleLoginButton() {
     return (
         <Button asChild>
             <a
                 href={'/auth/redirect/google'}
-                className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                className="text-sm text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2"
             >
-                Google
-                <DiscordLogoIcon className="mr-2 h-4 w-4" /> Login with Github
+                <BiLogoGoogle /> <span className="pl-2">Login with Github</span>
             </a>
         </Button>
     );
