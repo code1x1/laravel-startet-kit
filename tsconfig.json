@@ -17,5 +17,12 @@
             "ziggy-js": ["./vendor/tightenco/ziggy"]
         }
     },
-    "include": ["resources/js/**/*"]
+    "include": [
+        "resources/js/**/*",
+        "eslint.config.js",
+        "postcss.config.js",
+        "tailwind.config.js",
+        "vite.config.js",
+        "prettierrc.js"
+    ]
 }

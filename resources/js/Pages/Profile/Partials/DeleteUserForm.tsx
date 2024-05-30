@@ -1,8 +1,15 @@
-import { useRef, useState, type FormEventHandler } from 'react';
-import { useForm } from '@inertiajs/react';
-import { DangerButton, Modal, InputLabel, TextInput, InputError, SecondaryButton } from 'resources/js/Components';
+import { useRef, useState, type FormEventHandler } from "react";
+import { useForm } from "@inertiajs/react";
+import {
+    DangerButton,
+    Modal,
+    InputLabel,
+    TextInput,
+    InputError,
+    SecondaryButton,
+} from "resources/js/Components";
 
-export default function DeleteUserForm({ className = '' }: { className?: string }) {
+export default function DeleteUserForm({ className = "" }: { className?: string }) {
     const [confirmingUserDeletion, setConfirmingUserDeletion] = useState(false);
     const passwordInput = useRef<HTMLInputElement>(null);
 
@@ -14,7 +21,7 @@ export default function DeleteUserForm({ className = '' }: { className?: string 
         reset,
         errors,
     } = useForm({
-        password: '',
+        password: "",
     });
 
     const confirmUserDeletion = () => {
@@ -24,7 +31,7 @@ export default function DeleteUserForm({ className = '' }: { className?: string 
     const deleteUser: FormEventHandler = (e) => {
         e.preventDefault();
 
-        destroy(route('profile.destroy'), {
+        destroy(route("profile.destroy"), {
             preserveScroll: true,
             onSuccess() {
                 closeModal();
@@ -45,11 +52,14 @@ export default function DeleteUserForm({ className = '' }: { className?: string 
     return (
         <section className={`space-y-6 ${className}`}>
             <header>
-                <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100">Delete Account</h2>
+                <h2 className="text-lg font-medium text-gray-900 dark:text-gray-100">
+                    Delete Account
+                </h2>
 
                 <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                    Once your account is deleted, all of its resources and data will be permanently deleted. Before
-                    deleting your account, please download any data or information that you wish to retain.
+                    Once your account is deleted, all of its resources and data will be permanently
+                    deleted. Before deleting your account, please download any data or information
+                    that you wish to retain.
                 </p>
             </header>
 
@@ -62,8 +72,9 @@ export default function DeleteUserForm({ className = '' }: { className?: string 
                     </h2>
 
                     <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                        Once your account is deleted, all of its resources and data will be permanently deleted. Please
-                        enter your password to confirm you would like to permanently delete your account.
+                        Once your account is deleted, all of its resources and data will be
+                        permanently deleted. Please enter your password to confirm you would like to
+                        permanently delete your account.
                     </p>
 
                     <div className="mt-6">
@@ -76,7 +87,7 @@ export default function DeleteUserForm({ className = '' }: { className?: string 
                             ref={passwordInput}
                             value={data.password}
                             onChange={(e) => {
-                                setData('password', e.target.value);
+                                setData("password", e.target.value);
                             }}
                             className="mt-1 block w-3/4"
                             isFocused

@@ -1,23 +1,23 @@
-import { useEffect, type FormEventHandler } from 'react';
-import GuestLayout from 'resources/js/Layouts/GuestLayout';
-import { Head, useForm } from '@inertiajs/react';
-import { InputError, InputLabel, PrimaryButton, TextInput } from 'resources/js/Components';
+import { useEffect, type FormEventHandler } from "react";
+import GuestLayout from "resources/js/Layouts/GuestLayout";
+import { Head, useForm } from "@inertiajs/react";
+import { InputError, InputLabel, PrimaryButton, TextInput } from "resources/js/Components";
 
 export default function ConfirmPassword() {
     const { data, setData, post, processing, errors, reset } = useForm({
-        password: '',
+        password: "",
     });
 
     useEffect(() => {
         return () => {
-            reset('password');
+            reset("password");
         };
     }, []);
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
 
-        post(route('password.confirm'));
+        post(route("password.confirm"));
     };
 
     return (
@@ -25,7 +25,8 @@ export default function ConfirmPassword() {
             <Head title="Confirm Password" />
 
             <div className="mb-4 text-sm text-gray-600 dark:text-gray-400">
-                This is a secure area of the application. Please confirm your password before continuing.
+                This is a secure area of the application. Please confirm your password before
+                continuing.
             </div>
 
             <form onSubmit={submit}>
@@ -40,7 +41,7 @@ export default function ConfirmPassword() {
                         className="mt-1 block w-full"
                         isFocused={true}
                         onChange={(e) => {
-                            setData('password', e.target.value);
+                            setData("password", e.target.value);
                         }}
                     />
 

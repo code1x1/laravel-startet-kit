@@ -1,7 +1,7 @@
-module.exports = {
+export default {
     "useTabs": false,
     "tabWidth": 4,
-    "singleQuote": true,
-    "printWidth": 120,
+    "singleQuote": false,
+    "printWidth": 80,
     "trailingComma": "es5"
 }

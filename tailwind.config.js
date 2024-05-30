@@ -2,7 +2,7 @@
 module.exports = {
   darkMode: ["class"],
   content: [
-    './resources/**/*.{ts,tsx}',
+    "./resources/**/*.{ts,tsx}",
   ],
   prefix: "",
   theme: {
@@ -71,4 +71,4 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};

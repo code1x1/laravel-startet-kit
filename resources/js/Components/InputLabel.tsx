@@ -1,13 +1,16 @@
-import { type LabelHTMLAttributes } from 'react';
+import { type LabelHTMLAttributes } from "react";
 
 export function InputLabel({
     value,
-    className = '',
+    className = "",
     children,
     ...props
 }: LabelHTMLAttributes<HTMLLabelElement> & { value?: string }) {
     return (
-        <label {...props} className={`block font-medium text-sm text-gray-700 dark:text-gray-300 ` + className}>
+        <label
+            {...props}
+            className={"block font-medium text-sm text-gray-700 dark:text-gray-300 " + className}
+        >
             {value ? value : children}
         </label>
     );

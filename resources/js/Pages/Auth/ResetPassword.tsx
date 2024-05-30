@@ -1,26 +1,26 @@
-import { useEffect, type FormEventHandler } from 'react';
-import GuestLayout from 'resources/js/Layouts/GuestLayout';
-import { Head, useForm } from '@inertiajs/react';
-import { InputLabel, TextInput, InputError, PrimaryButton } from 'resources/js/Components';
+import { useEffect, type FormEventHandler } from "react";
+import GuestLayout from "resources/js/Layouts/GuestLayout";
+import { Head, useForm } from "@inertiajs/react";
+import { InputLabel, TextInput, InputError, PrimaryButton } from "resources/js/Components";
 
 export default function ResetPassword({ token, email }: { token: string; email: string }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         token,
         email,
-        password: '',
-        password_confirmation: '',
+        password: "",
+        password_confirmation: "",
     });
 
     useEffect(() => {
         return () => {
-            reset('password', 'password_confirmation');
+            reset("password", "password_confirmation");
         };
     }, []);
 
     const submit: FormEventHandler = (e) => {
         e.preventDefault();
 
-        post(route('password.store'));
+        post(route("password.store"));
     };
 
     return (
@@ -39,7 +39,7 @@ export default function ResetPassword({ token, email }: { token: string; email: 
                         className="mt-1 block w-full"
                         autoComplete="username"
                         onChange={(e) => {
-                            setData('email', e.target.value);
+                            setData("email", e.target.value);
                         }}
                     />
 
@@ -58,7 +58,7 @@ export default function ResetPassword({ token, email }: { token: string; email: 
                         autoComplete="new-password"
                         isFocused={true}
                         onChange={(e) => {
-                            setData('password', e.target.value);
+                            setData("password", e.target.value);
                         }}
                     />
 
@@ -75,7 +75,7 @@ export default function ResetPassword({ token, email }: { token: string; email: 
                         className="mt-1 block w-full"
                         autoComplete="new-password"
                         onChange={(e) => {
-                            setData('password_confirmation', e.target.value);
+                            setData("password_confirmation", e.target.value);
                         }}
                     />
 
