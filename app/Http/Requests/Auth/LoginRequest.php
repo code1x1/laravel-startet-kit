@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Auth;
 
+use App\Models\User;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
@@ -41,6 +42,13 @@ class LoginRequest extends FormRequest
     {
         $this->ensureIsNotRateLimited();
 
+        $email = $this->string('email');
+        $userByEmail = User::where("email", $email)->first();
+        if ($userByEmail && !$userByEmail->hasPassword()) {
+            throw ValidationException::withMessages([
+                'password' => trans('auth.missing_password'),
+            ]);
+        }
         if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 

@@ -51,4 +51,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function hasPassword() {
+        return strlen($this->getAuthPassword()) > 0;
+    }
 }

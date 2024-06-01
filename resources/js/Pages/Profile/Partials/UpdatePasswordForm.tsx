@@ -3,7 +3,7 @@ import { useForm } from "@inertiajs/react";
 import { Transition } from "@headlessui/react";
 import { InputLabel, TextInput, InputError, PrimaryButton } from "resources/js/Components";
 
-export default function UpdatePasswordForm({ className = "" }: { className?: string }) {
+export default function UpdatePasswordForm({ className = "", hasPassword }: { className?: string; hasPassword: boolean; }) {
     const passwordInput = useRef<HTMLInputElement>(null);
     const currentPasswordInput = useRef<HTMLInputElement>(null);
 
@@ -48,7 +48,7 @@ export default function UpdatePasswordForm({ className = "" }: { className?: str
             </header>
 
             <form onSubmit={updatePassword} className="mt-6 space-y-6">
-                <div>
+                {hasPassword ? <div>
                     <InputLabel htmlFor="current_password" value="Current Password" />
 
                     <TextInput
@@ -64,7 +64,7 @@ export default function UpdatePasswordForm({ className = "" }: { className?: str
                     />
 
                     <InputError message={errors.current_password} className="mt-2" />
-                </div>
+                </div> : null}
 
                 <div>
                     <InputLabel htmlFor="password" value="New Password" />

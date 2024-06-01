@@ -8,8 +8,13 @@ import { type PageProps } from "resources/js/types";
 export default function Edit({
     auth,
     mustVerifyEmail,
+    hasPassword,
     status,
-}: PageProps<{ mustVerifyEmail: boolean; status?: string }>) {
+}: PageProps<{
+    mustVerifyEmail: boolean;
+    hasPassword: boolean;
+    status?: string;
+}>) {
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -32,7 +37,10 @@ export default function Edit({
                     </div>
 
                     <div className="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
-                        <UpdatePasswordForm className="max-w-xl" />
+                        <UpdatePasswordForm
+                            hasPassword={hasPassword}
+                            className="max-w-xl"
+                        />
                     </div>
 
                     <div className="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
