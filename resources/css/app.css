@@ -82,4 +82,13 @@
     .button-plain {
         @apply px-3 py-2 text-black ring-1 ring-transparent transition hover:text-black/70 dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white;
     }
+    .button-link {
+        @apply text-red-400 hover:text-black hover:underline dark:text-white dark:hover:text-white/80 dark:focus-visible:ring-white;
+    }
+    .button-big-hover {
+        @apply p-12 m-2 rounded ring ring-red-400 ring-offset-2 shadow-red-400 shadow hover:shadow-xl hover:cursor-pointer;
+    }
+    .card {
+        @apply w-44;
+    }
 }

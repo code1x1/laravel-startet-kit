@@ -15,7 +15,7 @@ services:
     image: adminer
     restart: always
     ports:
-      - 8080:8080
+      - 8090:8080
 
   mail:
     image: mailhog/mailhog:v1.0.1
@@ -23,3 +23,13 @@ services:
     ports:
       - 1025:1025
       - 8025:8025
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:24.0.5
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+    command: ["start-dev"]

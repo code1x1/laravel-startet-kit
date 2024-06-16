@@ -14,6 +14,15 @@ Route::get('/', function () {
     ]);
 })->name('startpage');
 
+Route::get('/resize-image', function () {
+    return Inertia::render('ResizeImage', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+})->name('resizeImage');
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

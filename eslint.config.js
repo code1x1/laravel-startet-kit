@@ -34,7 +34,7 @@ export default [
             "tailwind.config.js",
             "vite.config.js",
         ],
-        ignores: ["node_modules", "build", "dist", "public"],
+        ignores: ["node_modules", "build", "dist", "public", "vendor"],
     },
     eslintConfigPrettier,
     eslintPluginPrettierRecommended,
